@@ -143,3 +143,19 @@ A    -> C(B): Ra, B, Da(Ra, Rb, A)
 C(A) -> B:    R'a, B, Da(Ra, Ra, B)
 ```
 Я хз, какое-то говно непротокольное. И это даже не называется Винером.
+
+## S/KEY
+[source](https://en.wikipedia.org/wiki/S/KEY)
+
+## CHAP
+```
+A -> B: A
+B -> A: R
+A -> B: H(R <> S) -- B checks correctness
+```
+
+## SecurID
+[source](https://en.wikipedia.org/wiki/RSA_SecurID)
+
+Девайс генерирует новые коды безопасности каждую минуту/час/промежуток времени.
+При аутентификации нужно ввести свой айди и текущий код.

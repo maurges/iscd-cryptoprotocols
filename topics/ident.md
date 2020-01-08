@@ -82,6 +82,8 @@ S    -> B:    E_{Kbs}(Rb) -- 2 interpreted by B as 1
 ```
 
 Mirroring attack:
+
+На модифицированный протокол, где сервер посылает ещё и личность в последнем сообщении
 ```
 C(A) -> B:    A
 B    -> C(A): Rb
@@ -89,8 +91,6 @@ C(A) -> B:    Rb
 B    -> C(S): E_{Kbs}(A, Rb)
 C(S) -> B:    E_{Kbs}(A, Rb)
 ```
-Тут модифицированный протокол, где сервер посылает ещё и личность того, кого он
-расшифровывает.
 
 ### NSPK
 
@@ -129,20 +129,22 @@ C(A) -> B:    Eb(A, K, Tb), Ek(Rb)
 ### ISO and Wiener
 
 ```
-A -> B: A, Ra
-B -> A: Rb,  A, Db(Rb, Ra,  A)
-A -> B: R'a, B, Da(Ra, R'a, B)
+A -> B: Ra
+B -> A: Cert_B, TokenBA
+A -> B: Cert_A, TokenAB
+where
+TokenBA = Rb, Ra, A, Db(Rb, Ra, A)
+TokenAB = Ra, Rb, B, Da(Ra, Rb, B)
 ```
 
 Attack:
 ```
-C(A) -> B:    A, Rc
-B    -> C(A): Rb, A, Db(Rb, Rc, A)
-C(B) -> A:    B, Rb
-A    -> C(B): Ra, B, Da(Ra, Rb, A)
-C(A) -> B:    R'a, B, Da(Ra, Ra, B)
+C(A) -> B:    Rc -- 1
+B    -> C(A): Cert_B, Rb, Rc, A, Db(Rb, Rc, A) -- 1
+C(B) -> A:    Rb -- 2
+A    -> C(B): Cert_A, Ra, Rb, B, Da(Ra, Rb, A) -- 2
+C(A) -> B:    Cert_A, Ra, Rb, B, Da(Ra, Rb, A) -- 1
 ```
-Я хз, какое-то говно непротокольное. И это даже не называется Винером.
 
 ## S/KEY
 [source](https://en.wikipedia.org/wiki/S/KEY)

@@ -1,3 +1,8 @@
+# Источники
+
+Credits to Natashka.
+[link](https://docs.google.com/document/d/1--cWCHCM0runCLjFAqgpL3Oy99YdvA24iRZa2lOcv8M/edit?usp=sharing)
+
 # Темы для всех билетов
 
 1. [Свойства, характеризующие безопасность КП](./topics/general.md#Свойства,-характеризующие-безопасность-КП)

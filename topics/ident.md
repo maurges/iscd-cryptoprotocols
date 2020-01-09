@@ -61,7 +61,7 @@ R - random, E - encrypt, D - decrypt (sign)
 ```
 A -> B: A
 B -> A: Rb
-A -> B: E_{Kas}(Nb) = Aid
+A -> B: E_{Kas}(Rb) = Aid
 B -> S: E_{Kbs}(A, Aid)
 S -> B: E_{Kbs}(Rb)
 ```

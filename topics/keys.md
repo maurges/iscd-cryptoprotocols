@@ -213,3 +213,25 @@ C(B) -> A:    B, A, w^y, Ek(Sign_B(w^y, w^x))
    A -> C(B): A, B, Ek(Sign_B(w^x, w^y))
 ```
 И дальше у нас нет к, так что максимум атака мусором от имени В.
+
+### DHKE
+
+```
+A -> B: w^x, SignA(w^x, B), certA
+B -> A: w^y, R, SignB(w^x, w^y, R, A), certB
+A -> B: k' = Hr(w^xy) -- для проверки и аутентификации
+```
+
+Атака, два атакующих:
+```
+A -> C: w^x, SignA(w^x, C), certA -- 1
+C -> D: A, B, w^x
+D -> B: w^x, SignD(w^x, B), certD            -- 2
+B -> D: w^y, R, SignB(w^x, w^ym R, D), certB -- 2
+D -> C: B, A, w^y, R
+C -> A: w^y, SignC(w^x, w^y, R, A), certC -- 1
+A -> C: k' -- 1
+C -> D: k'
+D -> B: k' -- 2
+```
+Нарушение свойства аутентификации ключа.
